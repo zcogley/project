@@ -16,10 +16,10 @@ function render() {
   $('#events').append(events);
 
   // clears the eventbox
-  $('eventbox').val('');
+  $('#eventbox').val('');
 
   // gives focus to the eventbox
-  $('eventbox').focus();
+  $('#eventbox').focus();
 
 }
 
