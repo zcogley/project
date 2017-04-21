@@ -20,7 +20,6 @@ function render() {
 
   // gives focus to the eventbox
   $('#eventbox').focus();
-
 }
 
 
@@ -33,7 +32,11 @@ function addNewEvent(event){
 
 // creates an event element
 function eventElement(item) {
-  var eventElement = $('<li></li>').text(item.event);
+  var eventElement = $('<li></li>')
+    .text(item.event);
+  var radioElement = document.createElement("INPUT");
+  radioElement.setAttribute("type", "radio");
+  eventElement.append(radioElement);
   return eventElement;
 }
 
