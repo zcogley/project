@@ -34,8 +34,11 @@ function addNewEvent(event){
 function eventElement(item) {
   var eventElement = $('<li></li>')
     .text(item.event);
-  var radioElement = document.createElement("INPUT");
-  radioElement.setAttribute("type", "radio");
+  var radioElement = $('<input>').attr({
+    type: 'radio',
+    id: item.event,
+    name: item.event
+  })
   eventElement.append(radioElement);
   return eventElement;
 }
