@@ -37,7 +37,9 @@ function eventElement(item) {
   var radioElement = $('<input>').attr({
     type: 'radio',
     id: item.event,
-    name: item.event
+    name: item.event,
+    value: item.event,
+    onclick: item.event
   })
   eventElement.append(radioElement);
   return eventElement;
