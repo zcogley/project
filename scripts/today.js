@@ -36,15 +36,15 @@ function eventElement(item) {
     id: item.event,
     name: item.event,
     value: item.event,
-    onclick: item.event
+  })
+
+// gives the radio element a function
+  radioElement.click(function() {
+    console.log("clicking");
   })
   eventElement.append(radioElement);
   return eventElement;
 }
-
-// listens for clicked radio button
-// needed?
-
 
 
 // ---------DOM EVENT HANDLERS---------
