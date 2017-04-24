@@ -22,13 +22,10 @@ function render() {
   $('#eventbox').focus();
 }
 
-
 // adds a new event
 function addNewEvent(event){
   model.events.push({event});
 }
-
-
 
 // creates an event element
 function eventElement(item) {
@@ -44,6 +41,11 @@ function eventElement(item) {
   eventElement.append(radioElement);
   return eventElement;
 }
+
+// listens for clicked radio button
+
+
+
 
 // ---------DOM EVENT HANDLERS---------
 $(document).ready(() => {
