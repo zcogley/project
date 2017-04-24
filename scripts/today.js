@@ -30,7 +30,7 @@ function addNewEvent(event){
 // creates an event element
 function eventElement(item) {
   var eventElement = $('<li></li>')
-    .text(item.event);
+    .text(item.event + " ");
   var radioElement = $('<input>').attr({
     type: 'radio',
     id: item.event,
@@ -43,7 +43,6 @@ function eventElement(item) {
 }
 
 // listens for clicked radio button
-
 
 
 
