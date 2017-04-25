@@ -9,7 +9,6 @@ var model = {
 
 // ----------VIEW----------
 function render() {
-  // updates the event list based on the model
   $('#events').empty();
 
   var events = model.events.map(eventElement);
@@ -27,24 +26,34 @@ function addNewEvent(event){
   model.events.push({event});
 }
 
+// // removes an event
+// function removeEvent(event){
+//   console.log(event);
+//   var index = model.events.indexOf({event});
+//   console.log(index);
+//   model.events.splice(index, 1);
+//
+// }
+
 // creates an event element
 function eventElement(item) {
   var eventElement = $('<li></li>')
     .text(item.event + " ");
   var radioElement = $('<input>').attr({
-    type: 'checkbox',
-    id: item.event,
-    name: item.event,
-    value: item.event,
+    type: 'checkbox'
   })
 
-// gives the radio element a function
+// gives the radio element a function to delete the event
+// not best practice, but splicing won't work b/c of where
+// the function is defined; no way to get the index of the event
   radioElement.click(function() {
-    console.log("clicking");
+    delete(item.event);
+
   })
   eventElement.append(radioElement);
   return eventElement;
 }
+
 
 
 // ---------DOM EVENT HANDLERS---------
