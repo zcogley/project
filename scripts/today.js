@@ -11,6 +11,8 @@ var model = {
 function render() {
   $('#events').empty();
 
+  // need to remove undefined elements from list
+
   var events = model.events.map(eventElement);
   $('#events').append(events);
 
@@ -48,7 +50,7 @@ function eventElement(item) {
 // the function is defined; no way to get the index of the event
   radioElement.click(function() {
     delete(item.event);
-
+    render();
   })
   eventElement.append(radioElement);
   return eventElement;
