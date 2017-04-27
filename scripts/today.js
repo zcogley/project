@@ -47,33 +47,37 @@ function render() {
   // gives focus to the eventbox
   $('#eventbox').focus();
 
+  // clears the complete area
+  $('#completes').empty();
+
   // renders complete items
   model.completes.forEach(function(complete) {
-  console.log(complete.event);
-  // creates each complete item element
-  var completeElement = $('<li></li>')
-    .text(event.event + ' ');
-  // creates a corresponding checkbox for re-adding event
-  var radElement = $('input').attr({
-    type: 'checkbox'
+    // creates each complete item element
+    var completeElement = $('<li></li>')
+      .text(complete.event + ' ');
+
+      console.log(completeElement);
+    // creates a corresponding checkbox for re-adding event
+    // var radElement = $('input').attr({
+    //   type: 'checkbox'
+    // });
+    // radElement.click(function(){
+    //   var idx = model.completes.indexOf(complete);
+    //
+    //   var redo = model.completes.splice(idx, 1);
+    //
+    //   model.events.push(redo);
+    //
+    //   $('#completes').empty();
+    //
+    //   render();
+    //   });
+    //
+    // completeElement.append(radElement);
+
+    $('#completes').append(completeElement);
+
   });
-    radElement.click(function(){
-        var index = model.completes.indexOf(event);
-
-        var redo = model.completes.splice(index, 1);
-
-        model.events.push(todo);
-
-        $('#completes').empty();
-
-        render();
-    });
-
-  completeElement.append(radElement);
-
-  $('#completes').append(completeElement);
-
-});
 
 }
 

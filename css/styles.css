@@ -22,6 +22,10 @@ body {
 }
 
 #completes {
+  list-style-type: none;
+  color: white;
+  background: grey;
+  margin: 0em 20% 2em 20%;
   broder-radius: 5px;
   border: black;
 }
