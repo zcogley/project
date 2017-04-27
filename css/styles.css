@@ -13,15 +13,17 @@ body {
   text: white;
 }
 
-ul {
+#events {
   list-style-type: none;
   background: rgba(5, 112, 255, 1);
   margin: 0em 10% 2em 10%;
   border-radius: 5px;
+  color: white;
 }
 
-#events {
-  color: white;
+#completes {
+  broder-radius: 5px;
+  border: black;
 }
 
 li {

@@ -16,22 +16,25 @@ function render() {
   model.events.forEach(function(event) {
     // creates each ToDo item element
     var eventElement = $('<li></li>')
-      .text(event.event + " ");
+      .text(event.event + ' ');
     // creates a corresponding checkbox for removing event
     var radioElement = $('<input>').attr({
       type: 'checkbox'
     });
-    radioElement.click(function() {
-      // function removes event on checkbox click
-      var index = model.events.indexOf(event);
+      radioElement.click(function() {
+        // function removes event on checkbox click
 
-      // done temporarily holds event removed
-      var done = model.events.splice(index, 1);
-      // adds done to completes array
-      model.completes.push(done);
+        // gets the index of the event to add to completes
+        var index = model.events.indexOf(event);
 
-      render();
-    });
+        // done array temporarily holds event removed
+        var done = model.events.splice(index, 1);
+
+        // adds done event to completes array
+        model.completes.push(done[0]);
+
+        render();
+      });
 
     eventElement.append(radioElement);
 
@@ -43,6 +46,35 @@ function render() {
 
   // gives focus to the eventbox
   $('#eventbox').focus();
+
+  // renders complete items
+  model.completes.forEach(function(complete) {
+  console.log(complete.event);
+  // creates each complete item element
+  var completeElement = $('<li></li>')
+    .text(event.event + ' ');
+  // creates a corresponding checkbox for re-adding event
+  var radElement = $('input').attr({
+    type: 'checkbox'
+  });
+    radElement.click(function(){
+        var index = model.completes.indexOf(event);
+
+        var redo = model.completes.splice(index, 1);
+
+        model.events.push(todo);
+
+        $('#completes').empty();
+
+        render();
+    });
+
+  completeElement.append(radElement);
+
+  $('#completes').append(completeElement);
+
+});
+
 }
 
 // adds a new event
