@@ -11,10 +11,23 @@ var model = {
 function render() {
   $('#events').empty();
 
-  // need to remove undefined elements from list
+  // render todo items
+  model.events.forEach(function(event) {
+    var eventElement = $('<li></li>')
+      .text(event.event + " ");
+    var radioElement = $('<input>').attr({
+      type: 'checkbox'
+    });
+    radioElement.click(function() {
+      // function removes event on checkbox click
+      var index = model.events.indexOf(event);
+      model.events.splice(index, 1);
+      render();
+    });
+    eventElement.append(radioElement);
 
-  var events = model.events.map(eventElement);
-  $('#events').append(events);
+    $('#events').append(eventElement);
+  });
 
   // clears the eventbox
   $('#eventbox').val('');
@@ -27,35 +40,6 @@ function render() {
 function addNewEvent(event){
   model.events.push({event});
 }
-
-// // removes an event
-// function removeEvent(event){
-//   console.log(event);
-//   var index = model.events.indexOf({event});
-//   console.log(index);
-//   model.events.splice(index, 1);
-//
-// }
-
-// creates an event element
-function eventElement(item) {
-  var eventElement = $('<li></li>')
-    .text(item.event + " ");
-  var radioElement = $('<input>').attr({
-    type: 'checkbox'
-  })
-
-// gives the radio element a function to delete the event
-// not best practice, but splicing won't work b/c of where
-// the function is defined; no way to get the index of the event
-  radioElement.click(function() {
-    delete(item.event);
-    render();
-  })
-  eventElement.append(radioElement);
-  return eventElement;
-}
-
 
 
 // ---------DOM EVENT HANDLERS---------
