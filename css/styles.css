@@ -1,7 +1,7 @@
 .jumbotron {
-  background: rgba(255, 128, 5, 1);
-  padding: 2%;
-  margin: 2%
+  background: rgba(192, 96, 4, 1);
+  padding: 1%;
+  margin: 1%
 }
 
 header {
@@ -10,26 +10,47 @@ header {
 
 body {
   text-align: center;
-  text: white;
+}
+
+div {
+  align-items: center;
+}
+
+ul {
+  margin-right: 40px;
+}
+
+li {
+  justify-content: left;
+}
+
+.btn {
+  border: 1px solid white;
+  margin: 2px;
+}
+
+#eventstuff {
+    background:  #014c8c;
+    margin: 0em 10% 2em 10%;
+    border-radius: 5px;
+    color: white;
 }
 
 #events {
   list-style-type: none;
-  background: rgba(5, 112, 255, 1);
+}
+
+#eventbox {
+  margin-bottom: 2em;
+}
+
+#completestuff {
+  color: white;
+  background: #ae433f;
   margin: 0em 10% 2em 10%;
   border-radius: 5px;
-  color: white;
 }
 
 #completes {
   list-style-type: none;
-  color: white;
-  background: grey;
-  margin: 0em 20% 2em 20%;
-  broder-radius: 5px;
-  border: black;
-}
-
-li {
-  color: white;
 }

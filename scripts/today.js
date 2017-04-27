@@ -16,27 +16,42 @@ function render() {
   model.events.forEach(function(event) {
     // creates each ToDo item element
     var eventElement = $('<li></li>')
-      .text(event.event + ' ');
-    // creates a corresponding checkbox for removing event
-    var radioElement = $('<input>').attr({
-      type: 'checkbox'
-    });
-      radioElement.click(function() {
-        // function removes event on checkbox click
 
-        // gets the index of the event to add to completes
+    var buttonElement = $('<button></button>')
+      .text(event.event)
+      .attr('class', 'btn btn-primary')
+      .click(function() {
         var index = model.events.indexOf(event);
-
-        // done array temporarily holds event removed
         var done = model.events.splice(index, 1);
-
-        // adds done event to completes array
         model.completes.push(done[0]);
-
         render();
       });
 
-    eventElement.append(radioElement);
+    eventElement.append(buttonElement);
+
+    // code for old way with checkboxes
+    //   .text(event.event + ' ');
+    // // creates a corresponding checkbox for removing event
+    // var radioElement = $('<input>').attr({
+    //   type: 'checkbox'
+    // });
+    //   radioElement.click(function() {
+    //     // function removes event on checkbox click
+    //
+    //     // gets the index of the event to add to completes
+    //     var index = model.events.indexOf(event);
+    //
+    //     // done array temporarily holds event removed
+    //     var done = model.events.splice(index, 1);
+    //
+    //     // adds done event to completes array
+    //     model.completes.push(done[0]);
+    //
+    //     render();
+    //   });
+    //
+    // eventElement.append(radioElement);
+
 
     $('#events').append(eventElement);
   });
@@ -54,30 +69,39 @@ function render() {
   model.completes.forEach(function(complete) {
     // creates each complete item element
     var completeElement = $('<li></li>')
-      .text(complete.event + ' ');
+    var btnElement = $('<button></button>')
+      .text(complete.event)
+      .attr('class', 'btn btn-danger')
+      .click(function() {
+        var idx = model.completes.indexOf(complete);
+        var did = model.completes.splice(idx, 1);
+        model.events.push(did[0]);
+        render();
 
-      console.log(completeElement);
-    // creates a corresponding checkbox for re-adding event
-    // var radElement = $('input').attr({
+      })
+    completeElement.append(btnElement);
+
+
+    // // creates a corresponding checkbox for deleting event
+    // var radElement = $('<input>').attr({
     //   type: 'checkbox'
     // });
-    // radElement.click(function(){
-    //   var idx = model.completes.indexOf(complete);
-    //
-    //   var redo = model.completes.splice(idx, 1);
-    //
-    //   model.events.push(redo);
-    //
-    //   $('#completes').empty();
-    //
-    //   render();
-    //   });
     //
     // completeElement.append(radElement);
 
     $('#completes').append(completeElement);
 
   });
+
+  var clearButton = $('<button></button>')
+    .text('ToDone')
+    .attr('class', 'btn')
+    .click(function() {
+      model.completes = [];
+      render();
+    });
+  $('#clearall').empty();
+  $('#clearall').append(clearButton);
 
 }
 
