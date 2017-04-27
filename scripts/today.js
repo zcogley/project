@@ -13,8 +13,10 @@ function render() {
 
   // render todo items
   model.events.forEach(function(event) {
+    // creates each ToDo item element
     var eventElement = $('<li></li>')
       .text(event.event + " ");
+    // creates a corresponding checkbox for removing event
     var radioElement = $('<input>').attr({
       type: 'checkbox'
     });
@@ -24,6 +26,7 @@ function render() {
       model.events.splice(index, 1);
       render();
     });
+
     eventElement.append(radioElement);
 
     $('#events').append(eventElement);
