@@ -4,6 +4,7 @@
 var model = {
 
   events: [],
+  completes: [],
 
 };
 
@@ -23,7 +24,12 @@ function render() {
     radioElement.click(function() {
       // function removes event on checkbox click
       var index = model.events.indexOf(event);
-      model.events.splice(index, 1);
+
+      // done temporarily holds event removed
+      var done = model.events.splice(index, 1);
+      // adds done to completes array
+      model.completes.push(done);
+
       render();
     });
 
