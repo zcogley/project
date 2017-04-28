@@ -10,6 +10,7 @@ var model = {
 
 // ----------VIEW----------
 function render() {
+  $('#instructions').empty();
   $('#events').empty();
 
   // render todo items
