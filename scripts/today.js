@@ -130,4 +130,10 @@ $(document).ready(() => {
     // renders page
     render();
   });
+
+  // Makes Events and Completes Sortable
+  var el = document.getElementById('events');
+  var sortable = Sortable.create(el);
+  var ell = document.getElementById('completes');
+  var sortable = Sortable.create(ell);
 })
