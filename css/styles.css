@@ -1,5 +1,5 @@
 .jumbotron {
-  background: rgba(192, 96, 4, 1);
+  background: orange;
   padding: 1%;
   margin: 1%
 }
@@ -25,15 +25,15 @@ li {
 }
 
 .btn {
-  border: 1px solid white;
-  margin: 2px;
+  border: 1px solid orange;
+  margin: 1px;
 }
 
 #eventstuff {
-    background:  #014c8c;
+    /*background:  #014c8c;*/
     margin: 0em 10% 2em 10%;
     border-radius: 5px;
-    color: white;
+    /*color: white;*/
 }
 
 #events {
@@ -45,8 +45,8 @@ li {
 }
 
 #completestuff {
-  color: white;
-  background: #ae433f;
+  /*color: white;
+  background: #ae433f;*/
   margin: 0em 10% 2em 10%;
   border-radius: 5px;
 }
