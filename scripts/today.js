@@ -16,8 +16,6 @@ function render() {
 
   // render todo items
   model.events.forEach(function(event) {
-    // creates each ToDo item element
-    var eventElement = $('<li></li>')
 
     var delButton = $('<button></button>')
       .attr('class', 'btn btn-danger')
@@ -33,6 +31,8 @@ function render() {
 
     delButton.append(trashSpan);
 
+    // creates each ToDo item element
+    var eventElement = $('<li></li>')
     var buttonElement = $('<button></button>')
       .text(event.event)
       .attr('class', 'btn btn-default')
@@ -43,6 +43,7 @@ function render() {
         render();
       });
 
+    // creates the 'done' checkmark
     var checkButton = $('<button></button>')
       .attr('class', 'btn btn-success')
       .click(function() {
@@ -78,14 +79,31 @@ function render() {
     var completeElement = $('<li></li>')
     var btnElement = $('<button></button>')
       .text(complete.event)
-      .attr('class', 'btn btn-success')
+      .attr('class', 'btn btn-default')
       .click(function() {
         var idx = model.completes.indexOf(complete);
         var did = model.completes.splice(idx, 1);
         model.events.push(did[0]);
         render();
       })
-    completeElement.append(btnElement);
+
+    // creates the 'redo' glyphicon
+    var redoButton = $('<button></button>')
+      .attr('class', 'btn btn-success')
+      .click(function() {
+        var index = model.completes.indexOf(complete);
+        var done = model.completes.splice(index, 1);
+        model.events.push(done[0]);
+        render();
+      });
+    var redoSpan = $('<span></span>')
+      .attr('class', 'glyphicon glyphicon-refresh')
+      .attr('aria-hidden', 'true');
+
+    redoButton.append(redoSpan);
+
+    completeElement.append(btnElement, redoButton);
+
     $('#completes').append(completeElement);
   });
 
@@ -104,18 +122,38 @@ function render() {
 
   // renders upcoming items
   model.upcoming.forEach(function(upcoming) {
+
+    // creates the delete upcoming event button
+    var delButton = $('<button></button>')
+      .attr('class', 'btn btn-danger')
+      .click(function() {
+        var index = model.upcoming.indexOf(event);
+        model.upcoming.splice(index, 1);
+        render();
+      });
+
+    var trashSpan = $('<span></span')
+      .attr('class', 'glyphicon glyphicon-trash')
+      .attr('aria-hidden', 'true');
+
+    delButton.append(trashSpan);
+
     // creates each upcoming item element
     var upcomingElement = $('<li></li>')
     var btnElement = $('<button></button>')
       .text(upcoming.event)
-      .attr('class', 'btn btn-success')
+      .attr('class', 'btn btn-default')
       .click(function() {
         var idx = model.upcoming.indexOf(upcoming);
         var did = model.upcoming.splice(idx, 1);
         model.events.push(did[0]);
         render();
       })
-    upcomingElement.append(btnElement);
+
+
+
+
+    upcomingElement.append(delButton, btnElement);
     $('#upcomings').append(upcomingElement);
   });
 
