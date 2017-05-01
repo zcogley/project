@@ -30,14 +30,15 @@
       <p>Add things you want to do by typing in the textbox.
       <br>The trash icon for each event removes it from the list.
       <br>You can reorder events by dragging and dropping.
+      <br>The check icon marks each event as done.
       <br>Use the 'ToDone' button to remove all complete events.
       </p>
     </div>
     <!-- A section for the things on the ToDo list -->
 
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <div id="eventstuff">
-        <h6>What you want to do today:</h6>
+        <h4>What you want to do today:</h4>
         <ul id="events" id="sortable">
           <!-- <li><button class="btn btn-primary">Take out the trash</button></li>
           <li><button class="btn btn-primary">Go to the gym</button></li> -->
@@ -52,9 +53,9 @@
       </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <div id="completestuff">
-        <h6>What you've done today:</h6>
+        <h4>What you've done today:</h4>
         <ul id="completes" id="sortable">
           <!-- <li><button class="btn btn-danger">Walk in the park</button></li>
           <li><button class="btn btn-danger">Commit changes to github</button></li> -->
@@ -64,6 +65,18 @@
       <div id="clearall">
         <button class="btn" id="clearall">ToDone</button>
       </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div id="comingup">
+        <h4>What's coming up soon:</h4>
+        <form id="add-upcoming-form">
+          <input type="text" id="comingupbox"/>
+        </form>
+      </div>
+    </div>
+
+
     </div>
 
 

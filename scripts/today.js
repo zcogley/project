@@ -19,7 +19,7 @@ function render() {
     var eventElement = $('<li></li>')
 
     var delButton = $('<button></button>')
-      .attr('class', 'btn btn-default')
+      .attr('class', 'btn btn-danger')
       .click(function() {
         var index = model.events.indexOf(event);
         model.events.splice(index, 1);
@@ -34,7 +34,7 @@ function render() {
 
     var buttonElement = $('<button></button>')
       .text(event.event)
-      .attr('class', 'btn btn-primary')
+      .attr('class', 'btn btn-default')
       .click(function() {
         var index = model.events.indexOf(event);
         var done = model.events.splice(index, 1);
@@ -43,7 +43,7 @@ function render() {
       });
 
     var checkButton = $('<button></button>')
-      .attr('class', 'btn btn-default')
+      .attr('class', 'btn btn-success')
       .click(function() {
         var index = model.events.indexOf(event);
         var done = model.events.splice(index, 1);
@@ -101,7 +101,7 @@ function render() {
     var completeElement = $('<li></li>')
     var btnElement = $('<button></button>')
       .text(complete.event)
-      .attr('class', 'btn btn-danger')
+      .attr('class', 'btn btn-success')
       .click(function() {
         var idx = model.completes.indexOf(complete);
         var did = model.completes.splice(idx, 1);
