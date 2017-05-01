@@ -77,6 +77,21 @@ function render() {
   model.completes.forEach(function(complete) {
     // creates each complete item element
     var completeElement = $('<li></li>')
+
+    var delButton = $('<button></button>')
+      .attr('class', 'btn btn-danger')
+      .click(function() {
+        var index = model.completes.indexOf(complete);
+        model.completes.splice(index, 1);
+        render();
+      });
+
+    var trashSpan = $('<span></span')
+      .attr('class', 'glyphicon glyphicon-trash')
+      .attr('aria-hidden', 'true');
+
+    delButton.append(trashSpan);
+
     var btnElement = $('<button></button>')
       .text(complete.event)
       .attr('class', 'btn btn-default')
@@ -102,13 +117,13 @@ function render() {
 
     redoButton.append(redoSpan);
 
-    completeElement.append(btnElement, redoButton);
+    completeElement.append(delButton, btnElement, redoButton);
 
     $('#completes').append(completeElement);
   });
 
   var clearButton = $('<button></button>')
-    .text('ToDone')
+    .text('Finito')
     .attr('class', 'btn')
     .click(function() {
       model.completes = [];
