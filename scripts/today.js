@@ -165,6 +165,10 @@ $(document).ready(() => {
 
     // renders page
     render();
+
+    // clears the eventbox and focuses it
+    $('#comingupbox').val('');
+    $('#comingupbox').focus();
   });
 
   // Makes Events and Completes and Upcoming Sortable
