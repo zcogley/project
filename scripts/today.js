@@ -5,6 +5,7 @@ var model = {
 
   events: [],
   completes: [],
+  upcoming: [],
 
 };
 
@@ -110,17 +111,7 @@ function render() {
 
       })
     completeElement.append(btnElement);
-
-
-    // // creates a corresponding checkbox for deleting event
-    // var radElement = $('<input>').attr({
-    //   type: 'checkbox'
-    // });
-    //
-    // completeElement.append(radElement);
-
     $('#completes').append(completeElement);
-
   });
 
   var clearButton = $('<button></button>')
@@ -140,6 +131,10 @@ function addNewEvent(event){
   model.events.push({event});
 }
 
+function addUpcomingEvent(event){
+  model.upcoming.push({event});
+}
+
 
 // ---------DOM EVENT HANDLERS---------
 $(document).ready(() => {
@@ -149,7 +144,11 @@ $(document).ready(() => {
     model.currentEvent = $('#eventbox').val();
   });
 
-  // when the form is submitted
+  $('#comingupbox').on('input', () => {
+    model.currentEvent = $('#comingupbox').val();
+  })
+
+  // when the add event form is submitted
   $('#add-event-form').submit((evt) => {
     // don't refresh the page
     evt.preventDefault();
@@ -161,7 +160,19 @@ $(document).ready(() => {
     render();
   });
 
-  // Makes Events and Completes Sortable
+  // when the add upcoming event form is submitted
+  $('#add-upcoming-form').submit((evt) => {
+    // don't refresh the page
+    evt.preventDefault();
+
+    // add a new event from whatever typed
+    addUpcomingEvent(model.currentEvent);
+
+    // renders page
+    render();
+  });
+
+  // Makes Events and Completes and Upcoming Sortable
   var el = document.getElementById('events', 'completes');
   var sortable = Sortable.create(el);
   var ell = document.getElementById('completes');
