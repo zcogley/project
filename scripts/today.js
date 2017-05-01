@@ -18,6 +18,16 @@ function render() {
     // creates each ToDo item element
     var eventElement = $('<li></li>')
 
+    var delButton = $('<button></button>')
+      // .text('x')
+      .attr('class', 'btn btn-default');
+
+    var trashSpan = $('<span></span')
+      .attr('class', 'glyphicon glyphicon-trash')
+      .attr('aria-hidden', 'true');
+
+    delButton.append(trashSpan);
+
     var buttonElement = $('<button></button>')
       .text(event.event)
       .attr('class', 'btn btn-primary')
@@ -28,7 +38,7 @@ function render() {
         render();
       });
 
-    eventElement.append(buttonElement);
+    eventElement.append(delButton, buttonElement);
 
     // code for old way with checkboxes
     //   .text(event.event + ' ');
