@@ -19,8 +19,12 @@ function render() {
     var eventElement = $('<li></li>')
 
     var delButton = $('<button></button>')
-      // .text('x')
-      .attr('class', 'btn btn-default');
+      .attr('class', 'btn btn-default')
+      .click(function() {
+        var index = model.events.indexOf(event);
+        model.events.splice(index, 1);
+        render();
+      });
 
     var trashSpan = $('<span></span')
       .attr('class', 'glyphicon glyphicon-trash')
@@ -38,7 +42,22 @@ function render() {
         render();
       });
 
-    eventElement.append(delButton, buttonElement);
+    var checkButton = $('<button></button>')
+      .attr('class', 'btn btn-default')
+      .click(function() {
+        var index = model.events.indexOf(event);
+        var done = model.events.splice(index, 1);
+        model.completes.push(done[0]);
+        render();
+      });
+
+    var checkSpan = $('<span></span>')
+      .attr('class', 'glyphicon glyphicon-ok')
+      .attr('aria-hidden', 'true');
+
+    checkButton.append(checkSpan);
+
+    eventElement.append(delButton, buttonElement, checkButton);
 
     // code for old way with checkboxes
     //   .text(event.event + ' ');
