@@ -60,30 +60,6 @@ function render() {
 
     eventElement.append(delButton, buttonElement, checkButton);
 
-    // code for old way with checkboxes
-    //   .text(event.event + ' ');
-    // // creates a corresponding checkbox for removing event
-    // var radioElement = $('<input>').attr({
-    //   type: 'checkbox'
-    // });
-    //   radioElement.click(function() {
-    //     // function removes event on checkbox click
-    //
-    //     // gets the index of the event to add to completes
-    //     var index = model.events.indexOf(event);
-    //
-    //     // done array temporarily holds event removed
-    //     var done = model.events.splice(index, 1);
-    //
-    //     // adds done event to completes array
-    //     model.completes.push(done[0]);
-    //
-    //     render();
-    //   });
-    //
-    // eventElement.append(radioElement);
-
-
     $('#events').append(eventElement);
   });
 
@@ -108,7 +84,6 @@ function render() {
         var did = model.completes.splice(idx, 1);
         model.events.push(did[0]);
         render();
-
       })
     completeElement.append(btnElement);
     $('#completes').append(completeElement);
@@ -123,6 +98,26 @@ function render() {
     });
   $('#clearall').empty();
   $('#clearall').append(clearButton);
+
+  // clears the upcoming area
+  $('#upcomings').empty();
+
+  // renders upcoming items
+  model.upcoming.forEach(function(upcoming) {
+    // creates each upcoming item element
+    var upcomingElement = $('<li></li>')
+    var btnElement = $('<button></button>')
+      .text(upcoming.event)
+      .attr('class', 'btn btn-success')
+      .click(function() {
+        var idx = model.upcoming.indexOf(upcoming);
+        var did = model.upcoming.splice(idx, 1);
+        model.events.push(did[0]);
+        render();
+      })
+    upcomingElement.append(btnElement);
+    $('#upcomings').append(upcomingElement);
+  });
 
 }
 
@@ -173,8 +168,10 @@ $(document).ready(() => {
   });
 
   // Makes Events and Completes and Upcoming Sortable
-  var el = document.getElementById('events', 'completes');
+  var el = document.getElementById('events');
   var sortable = Sortable.create(el);
   var ell = document.getElementById('completes');
   var sortable = Sortable.create(ell);
+  var elll = document.getElementById('upcomings');
+  var sortable = Sortable.create(elll);
 })
