@@ -22,7 +22,7 @@
 <body>
   <header class="jumbotron">
     <h1>Oggi</h1>
-    <p>A simple (inexplicably Italian themed) task list.</p>
+    <p>A simple task list.</p>
   </header>
 
   <main>
@@ -38,7 +38,7 @@
 
     <div class="col-sm-4">
       <div id="eventstuff">
-        <h4>What you want to do today:</h4>
+        <h4>Today:</h4>
         <ul id="events" id="sortable">
           <!-- <li><button class="btn btn-primary">Take out the trash</button></li>
           <li><button class="btn btn-primary">Go to the gym</button></li> -->
@@ -54,8 +54,22 @@
     </div>
 
     <div class="col-sm-4">
+      <div id="comingup">
+        <h4>Soon:</h4>
+        <ul id="upcomings" id="sortable">
+        </ul>
+      </div>
+
+      <div id="upcomingstuff">
+        <form id="add-upcoming-form">
+          <input type="text" id="comingupbox"/>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
       <div id="completestuff">
-        <h4>What you've done today:</h4>
+        <h4>Done:</h4>
         <ul id="completes" id="sortable">
           <!-- <li><button class="btn btn-danger">Walk in the park</button></li>
           <li><button class="btn btn-danger">Commit changes to github</button></li> -->
@@ -67,21 +81,6 @@
       </div>
     </div>
 
-    <div class="col-sm-4">
-      <div id="comingup">
-        <h4>What's coming up soon:</h4>
-        <ul id="upcomings" id="sortable">
-        </ul>
-      <div>
-      <div id="upcomingstuff">
-        <form id="add-upcoming-form">
-          <input type="text" id="comingupbox"/>
-        </form>
-      </div>
-    </div>
-
-
-    </div>
 
 
   </main>

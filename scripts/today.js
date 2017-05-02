@@ -163,12 +163,24 @@ function render() {
         var did = model.upcoming.splice(idx, 1);
         model.events.push(did[0]);
         render();
-      })
+      });
 
+    // creates each add event to inbox button
+    var inboxButton = $('<button></button>')
+      .attr('class', 'btn btn-success')
+      .click(function() {
+        var index = model.upcoming.indexOf(upcoming);
+        var done = model.upcoming.splice(index, 1);
+        model.events.push(done[0]);
+        render();
+      });
+    var inboxSpan = $('<span></span>')
+      .attr('class', 'glyphicon glyphicon-inbox')
+      .attr('aria-hidden', 'true');
 
+    inboxButton.append(inboxSpan);
 
-
-    upcomingElement.append(delButton, btnElement);
+    upcomingElement.append(delButton, btnElement, inboxButton);
     $('#upcomings').append(upcomingElement);
   });
 
