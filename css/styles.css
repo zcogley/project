@@ -29,14 +29,12 @@ li {
 }
 
 .btn {
-  /*border: 1px solid orange;*/
   margin: 1px;
   max-width: 100%;
   white-space: normal;
 }
 
 #eventstuff {
-    margin: 0em 10% 2em 10%;
     border-radius: 5px;
 }
 
@@ -49,7 +47,6 @@ li {
 }
 
 #completestuff {
-  margin: 0em 10% 2em 10%;
   border-radius: 5px;
 }
 
